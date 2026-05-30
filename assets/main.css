@@ -675,3 +675,12 @@ button, input, textarea {
         overflow-wrap: anywhere;
     }
 }
+
+html.contact-jump .page-main,
+html.contact-jump .footer {
+    opacity: 0;
+}
+
+html.contact-jump * {
+    scroll-behavior: auto !important;
+}

@@ -80,6 +80,7 @@ pub fn SiteLayout() -> Element {
                                 document::eval(
                                     r#"
                                     sessionStorage.setItem('scrollToContact', 'true');
+                                    document.documentElement.classList.add('contact-jump');
                                     "#,
                                 );
 

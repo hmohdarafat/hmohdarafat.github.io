@@ -13,28 +13,36 @@ pub fn Home() -> Element {
             if (shouldScrollToContact) {
                 let attempts = 0;
 
+                const finishJump = () => {
+                    sessionStorage.removeItem('scrollToContact');
+                    document.documentElement.classList.remove('contact-jump');
+                };
+
                 const scrollToContact = () => {
                     const contactSection = document.getElementById('contact');
                     attempts += 1;
 
                     if (contactSection) {
-                        sessionStorage.removeItem('scrollToContact');
                         window.history.replaceState(null, '', '/#contact');
 
                         contactSection.scrollIntoView({
-                            behavior: 'smooth',
+                            behavior: 'auto',
                             block: 'start'
                         });
+
+                        requestAnimationFrame(finishJump);
                     } else if (attempts < 20) {
-                        setTimeout(scrollToContact, 100);
+                        requestAnimationFrame(scrollToContact);
+                    } else {
+                        finishJump();
                     }
                 };
 
-                setTimeout(scrollToContact, 100);
-            }
-            "#,
-        );
-    });
+            requestAnimationFrame(scrollToContact);
+        }
+        "#,
+    );
+});
 
     rsx! {
         main { class: "page-main",
