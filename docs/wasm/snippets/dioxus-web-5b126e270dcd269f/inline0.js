@@ -1,12 +1,11 @@
 
-                export function get_initial_hydration_data() {
-                    const decoded = atob(window.initial_dioxus_hydration_data);
-                    return Uint8Array.from(decoded, (c) => c.charCodeAt(0))
-                }
-                export function get_initial_hydration_debug_types() {
-                    return window.initial_dioxus_hydration_debug_types;
-                }
-                export function get_initial_hydration_debug_locations() {
-                    return window.initial_dioxus_hydration_debug_locations;
-                }
-            
+export function js_show_toast(header_text, message, level, as_ms) {
+    if (typeof showDXToast !== "undefined") {{
+        window.showDXToast(header_text, message, level, as_ms);
+    }}
+}
+export function js_schedule_toast(header_text, message, level, as_ms) {
+    if (typeof scheduleDXToast !== "undefined") {{
+        window.scheduleDXToast(header_text, message, level, as_ms);
+    }}
+}

@@ -1,11 +1,12 @@
 
-export function js_show_toast(header_text, message, level, as_ms) {
-    if (typeof showDXToast !== "undefined") {{
-        window.showDXToast(header_text, message, level, as_ms);
-    }}
-}
-export function js_schedule_toast(header_text, message, level, as_ms) {
-    if (typeof scheduleDXToast !== "undefined") {{
-        window.scheduleDXToast(header_text, message, level, as_ms);
-    }}
+export function get_select_data(select) {
+    let values = [];
+    for (let i = 0; i < select.options.length; i++) {
+      let option = select.options[i];
+      if (option.selected) {
+        values.push(option.value.toString());
+      }
+    }
+
+    return values;
 }
