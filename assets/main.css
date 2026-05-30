@@ -65,18 +65,8 @@ button, input, textarea {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.03em;
-}
-
-.brand-mark {
-    display: grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 1rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    box-shadow: 0 12px 40px rgba(124, 92, 255, 0.32);
 }
 
 .nav-links {
@@ -132,7 +122,7 @@ button, input, textarea {
     max-width: 900px;
     font-size: clamp(2.7rem, 8vw, 6.2rem);
     line-height: 0.92;
-    letter-spacing: -0.08em;
+    letter-spacing: -0.04em;
 }
 
 .gradient-text {
@@ -454,3 +444,163 @@ button, input, textarea {
         flex-direction: column;
     }
 }
+
+.brand-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--line);
+    box-shadow: 0 0 18px rgba(0, 212, 255, 0.18);
+}
+
+.brand-text {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.brand-name {
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    background: linear-gradient(135deg, #ffffff, #dce4ff 55%, #a9c7ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.brand-bracket {
+    color: rgba(183, 192, 216, 0.65);
+    font-weight: 800;
+}
+
+.brand-domain {
+    color: var(--accent-3);
+    font-weight: 850;
+    letter-spacing: -0.02em;
+}
+
+.brand:hover .brand-domain {
+    color: var(--accent-2);
+}
+
+.brand:hover .brand-image {
+    border-color: rgba(0, 212, 255, 0.45);
+    box-shadow: 0 0 24px rgba(0, 212, 255, 0.28);
+}
+
+.nav-link {
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-link.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    box-shadow: 0 8px 24px rgba(56, 189, 248, 0.25);
+}
+
+/* Animated gradient theme effects */
+:root {
+    --animated-gradient: linear-gradient(
+        120deg,
+        var(--accent),
+        var(--accent-2),
+        var(--accent-3),
+        var(--accent-2),
+        var(--accent)
+    );
+}
+
+/* Shared animation */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Make hmohdarafat.github.io animated */
+.brand-domain {
+    background: var(--animated-gradient);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientFlow 5s ease infinite;
+    text-shadow: 0 0 22px rgba(0, 212, 255, 0.22);
+}
+
+/* Keep hover brighter but still animated */
+.brand:hover .brand-domain {
+    color: transparent;
+    filter: brightness(1.18);
+}
+
+/* Animated primary buttons */
+.btn.primary {
+    border: 0;
+    background: var(--animated-gradient);
+    background-size: 300% 300%;
+    animation: gradientFlow 5s ease infinite;
+    color: #ffffff;
+    box-shadow:
+        0 18px 45px rgba(0, 212, 255, 0.22),
+        0 0 28px rgba(124, 92, 255, 0.16);
+}
+
+/* Optional: make normal buttons slightly glow on hover */
+.btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 212, 255, 0.38);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.12);
+}
+
+/* Animated active navbar button */
+.nav-link.active {
+    color: #ffffff;
+    background: var(--animated-gradient);
+    background-size: 300% 300%;
+    animation: gradientFlow 5s ease infinite;
+    box-shadow:
+        0 8px 24px rgba(56, 189, 248, 0.25),
+        0 0 22px rgba(124, 92, 255, 0.16);
+}
+
+/* Slight hover lift for active nav link */
+.nav-link.active:hover {
+    color: #ffffff;
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+/* Accessibility: stop animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .brand-domain,
+    .btn.primary,
+    .nav-link.active {
+        animation: none;
+    }
+}
+
