@@ -1203,13 +1203,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "github_website"
-version = "0.1.0"
-dependencies = [
- "dioxus",
-]
-
-[[package]]
 name = "gloo-net"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1294,6 +1287,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "54b4a22553d4242c49fddb9ba998a99962b5cc6f22cb5a3482bec22522403ce4"
 dependencies = [
  "http",
+]
+
+[[package]]
+name = "hmohdarafat_github_io"
+version = "0.1.0"
+dependencies = [
+ "dioxus",
 ]
 
 [[package]]

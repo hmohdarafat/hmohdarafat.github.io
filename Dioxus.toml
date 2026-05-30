@@ -1,19 +1,13 @@
 [application]
-name = "github_website"
+name = "hmohdarafat.github.io"
 default_platform = "web"
-out_dir = "dist"
+out_dir = "docs"
 asset_dir = "assets"
 
 [web.app]
 title = "Mohd Arafat Hossain"
 
-[web.watcher]
-reload_html = true
-watch_path = ["src", "assets"]
-
-[web.resource]
-style = []
-script = []
-
-[web.resource.dev]
-script = []
+# This repository is a GitHub Pages user site: https://hmohdarafat.github.io
+# Therefore there is no repo-name subpath. Leave base_path unset for the root domain.
+# For a project site like https://hmohdarafat.github.io/my-project, use:
+# base_path = "my-project"

@@ -1,8 +1,13 @@
 [package]
-name = "github_website"
+name = "hmohdarafat_github_io"
 version = "0.1.0"
-authors = ["Mohd Arafat Hossain <hmohdarafat@gmail.com>"]
 edition = "2021"
+authors = ["Mohd Arafat Hossain <hmohdarafat@gmail.com>"]
+description = "Dioxus portfolio, resume, and blog site for hmohdarafat.github.io"
 
 [dependencies]
-dioxus = { version = "0.7.1", features = ["web", "router"] }
+dioxus = { version = "0.7", features = ["web", "router"] }
+
+[features]
+default = ["web"]
+web = ["dioxus/web"]

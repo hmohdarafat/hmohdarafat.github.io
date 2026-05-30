@@ -1,16 +1,43 @@
-#![allow(non_snake_case)]
+mod content;
+mod pages;
 
 use dioxus::prelude::*;
+use pages::{Blog, BlogPost, Home, NotFound, Portfolio, Resume, SiteLayout};
 
-mod app;
-mod components;
-mod sections;
-mod portfolio;
-mod resume;
-mod blog;
-
-use app::App;
+static MAIN_CSS: Asset = asset!("/assets/main.css");
 
 fn main() {
-    launch(App);
+    dioxus::launch(App);
+}
+
+#[derive(Routable, Clone, Debug, PartialEq)]
+#[rustfmt::skip]
+pub enum Route {
+    #[layout(SiteLayout)]
+        #[route("/")]
+        Home {},
+
+        #[route("/resume")]
+        Resume {},
+
+        #[route("/portfolio")]
+        Portfolio {},
+
+        #[route("/blog")]
+        Blog {},
+
+        #[route("/blog/:slug")]
+        BlogPost { slug: String },
+
+        #[route("/:..route")]
+        NotFound { route: Vec<String> },
+}
+
+#[component]
+fn App() -> Element {
+    rsx! {
+        document::Title { "Mohd Arafat Hossain" }
+        document::Stylesheet { href: MAIN_CSS }
+        Router::<Route> {}
+    }
 }
