@@ -1,6 +1,5 @@
 /target
 /dist
-/docs
 Cargo.lock
 .DS_Store
 *.log
