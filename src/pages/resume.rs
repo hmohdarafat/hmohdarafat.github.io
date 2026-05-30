@@ -10,7 +10,14 @@ pub fn Resume() -> Element {
                 h1 { class: "page-title gradient-text", "{RESUME.name}" }
                 p { class: "page-lead", "{RESUME.headline}" }
                 div { class: "hero-actions",
-                    a { class: "btn primary", href: "mailto:{RESUME.email}", "Email Me" }
+                    a {
+                        class: "btn email-btn",
+                        href: "https://mail.google.com/mail/?view=cm&fs=1&to={RESUME.email}",
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                        span { class: "email-label", "Email" }
+                        span { class: "email-address", "{RESUME.email}" }
+                    }
                     a { class: "btn", href: "{RESUME.github}", target: "_blank", rel: "noopener noreferrer", "GitHub" }
                     a { class: "btn", href: "{RESUME.linkedin}", target: "_blank", rel: "noopener noreferrer", "LinkedIn" }
                 }

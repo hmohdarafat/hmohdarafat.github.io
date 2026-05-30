@@ -9,6 +9,8 @@ pub fn SiteLayout() -> Element {
     let resume_active = matches!(&current_route, Route::Resume {});
     let portfolio_active = matches!(&current_route, Route::Portfolio {});
     let blog_active = matches!(&current_route, Route::Blog {});
+    
+    let navigator = use_navigator();
 
     rsx! {
         div { class: "site-shell",
@@ -55,7 +57,35 @@ pub fn SiteLayout() -> Element {
 
                     a {
                         class: "nav-link",
-                        href: "mailto:hmohdarafat@gmail.com",
+                        href: "/#contact",
+                        onclick: move |event| {
+                            event.prevent_default();
+
+                            if home_active {
+                                document::eval(
+                                    r#"
+                                    const contactSection = document.getElementById('contact');
+
+                                    if (contactSection) {
+                                        window.history.replaceState(null, '', '/#contact');
+
+                                        contactSection.scrollIntoView({
+                                            behavior: 'smooth',
+                                            block: 'start'
+                                        });
+                                    }
+                                    "#,
+                                );
+                            } else {
+                                document::eval(
+                                    r#"
+                                    sessionStorage.setItem('scrollToContact', 'true');
+                                    "#,
+                                );
+
+                                navigator.push(Route::Home {});
+                            }
+                        },
                         "Contact"
                     }
                 }

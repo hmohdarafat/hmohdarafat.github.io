@@ -22,6 +22,10 @@ html {
     scroll-behavior: smooth;
 }
 
+#contact {
+    scroll-margin-top: 100px;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -604,3 +608,70 @@ button, input, textarea {
     }
 }
 
+.email-btn {
+    gap: 0.55rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 2.95rem;
+    padding: 0.78rem 1.15rem;
+    border: 1px solid rgba(0, 212, 255, 0.32);
+    background:
+        linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(0, 212, 255, 0.10)),
+        rgba(255, 255, 255, 0.065);
+    color: var(--text);
+    box-shadow:
+        0 12px 34px rgba(0, 212, 255, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.045) inset;
+}
+
+.email-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(106, 240, 182, 0.16), transparent 45%);
+    pointer-events: none;
+}
+
+.email-btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(106, 240, 182, 0.55);
+    background:
+        linear-gradient(135deg, rgba(124, 92, 255, 0.24), rgba(0, 212, 255, 0.16)),
+        rgba(255, 255, 255, 0.09);
+    box-shadow:
+        0 16px 42px rgba(0, 212, 255, 0.18),
+        0 0 28px rgba(124, 92, 255, 0.14);
+}
+
+.email-label,
+.email-address {
+    position: relative;
+    z-index: 1;
+}
+
+.email-label {
+    color: var(--accent-3);
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+}
+
+.email-address {
+    color: #ffffff;
+    font-weight: 850;
+    letter-spacing: -0.015em;
+}
+
+@media (max-width: 520px) {
+    .email-btn {
+        width: 100%;
+        justify-content: flex-start;
+        border-radius: 1.2rem;
+        flex-wrap: wrap;
+    }
+
+    .email-address {
+        overflow-wrap: anywhere;
+    }
+}

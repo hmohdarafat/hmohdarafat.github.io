@@ -3,6 +3,39 @@ use dioxus::prelude::*;
 
 #[component]
 pub fn Home() -> Element {
+    use_effect(move || {
+        document::eval(
+            r#"
+            const shouldScrollToContact =
+                window.location.hash === '#contact' ||
+                sessionStorage.getItem('scrollToContact') === 'true';
+
+            if (shouldScrollToContact) {
+                let attempts = 0;
+
+                const scrollToContact = () => {
+                    const contactSection = document.getElementById('contact');
+                    attempts += 1;
+
+                    if (contactSection) {
+                        sessionStorage.removeItem('scrollToContact');
+                        window.history.replaceState(null, '', '/#contact');
+
+                        contactSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    } else if (attempts < 20) {
+                        setTimeout(scrollToContact, 100);
+                    }
+                };
+
+                setTimeout(scrollToContact, 100);
+            }
+            "#,
+        );
+    });
+
     rsx! {
         main { class: "page-main",
             section { class: "hero",
@@ -78,9 +111,30 @@ pub fn Home() -> Element {
                         p { "Email is the best first contact point." }
                     }
                     div { class: "contact-links",
-                        a { class: "btn primary", href: "mailto:hmohdarafat@gmail.com", "hmohdarafat@gmail.com" }
-                        a { class: "btn", href: "https://github.com/hmohdarafat", target: "_blank", rel: "noopener noreferrer", "GitHub" }
-                        a { class: "btn", href: "https://www.linkedin.com/in/hmohdarafat/", target: "_blank", rel: "noopener noreferrer", "LinkedIn" }
+                        a {
+                            class: "btn email-btn",
+                            href: "https://mail.google.com/mail/?view=cm&fs=1&to=hmohdarafat@gmail.com",
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                            span { class: "email-label", "Email" }
+                            span { class: "email-address", "hmohdarafat@gmail.com" }
+                        }
+
+                        a {
+                            class: "btn",
+                            href: "https://github.com/hmohdarafat",
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                            "GitHub"
+                        }
+
+                        a {
+                            class: "btn",
+                            href: "https://www.linkedin.com/in/mohdarafathossain/",
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                            "LinkedIn"
+                        }
                     }
                 }
             }
