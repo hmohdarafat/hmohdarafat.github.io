@@ -78,7 +78,7 @@ pub fn Home() -> Element {
                         div { class: "stat-grid",
                             div { class: "stat", strong { "5+" } span { "Years of professional working experience" } }
                             div { class: "stat", strong { "10+" } span { "Complete SaaS application delivered" } }
-                            div { class: "stat", strong { "Quick!" } span { "I love moving fast and breaking things! - then fixing." } }
+                            div { class: "stat", strong { "Quick!" } span { "I love moving fast and breaking things! - then fixing it." } }
                         }
                     }
                 }
@@ -142,10 +142,6 @@ pub fn Home() -> Element {
                         p { class: "eyebrow", "Contact" }
 
                         h2 { "Contact Me" }
-
-                        p { class: "page-lead",
-                            "Choose a quick message type below."
-                        }
                     }
                 }
 
