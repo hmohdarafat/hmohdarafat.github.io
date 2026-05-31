@@ -53,7 +53,6 @@ pub fn Resume() -> Element {
                             div { class: "timeline-item",
                                 h3 { "{item.degree}" }
                                 p { class: "meta", "{item.school} • {item.period}" }
-                                p { "{item.details}" }
                             }
                         }
                     }
